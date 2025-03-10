@@ -3,9 +3,10 @@ import { CryptoData } from '../types/crypto';
 interface CryptoCardProps {
   coin: CryptoData;
   index: number;
+  priceColor: string;
 }
 
-export default function CryptoCard({ coin, index }: CryptoCardProps) {
+export default function CryptoCard({ coin, index, priceColor }: CryptoCardProps) {
   return (
     <div
       className="crypto-card animate-slide-up shadow-lg border border-neon-green p-6 rounded-xl backdrop-blur-md bg-black/90 hover:shadow-neon transition-all duration-300 ease-in-out transform hover:scale-105"
@@ -26,7 +27,7 @@ export default function CryptoCard({ coin, index }: CryptoCardProps) {
         <p className="text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-neon-green to-cyan-400 drop-shadow-lg">
           ${coin.current_price.toLocaleString()}
         </p>
-        <p className={`text-lg font-semibold drop-shadow-md ${coin.price_change_percentage_24h > 0 ? 'text-green-400' : 'text-red-400'}`}> 
+        <p className={`text-lg font-semibold drop-shadow-md ${priceColor}`}> 
           {coin.price_change_percentage_24h > 0 ? '▲' : '▼'}
           {Math.abs(coin.price_change_percentage_24h).toFixed(2)}%
         </p>

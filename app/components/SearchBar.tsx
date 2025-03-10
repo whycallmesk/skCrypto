@@ -23,24 +23,19 @@ export default function SearchBar({ searchTerm, onSearch, cryptoList }: SearchBa
       />
       {showDropdown && searchTerm && (
         <ul className="absolute z-10 w-full bg-gray-800 border border-gray-700 rounded-lg mt-1 max-h-48 overflow-y-auto shadow-lg">
-          {cryptoList
+        {cryptoList?.length > 0 &&
+          cryptoList
             .filter((crypto) =>
               crypto.name.toLowerCase().includes(searchTerm.toLowerCase())
             )
             .slice(0, 5)
             .map((crypto) => (
-              <li
-                key={crypto.id}
-                className="p-2 hover:bg-purple-600 cursor-pointer text-white"
-                onClick={() => {
-                  onSearch(crypto.name);
-                  setShowDropdown(false);
-                }}
-              >
+              <li key={crypto.id} className="px-4 py-2 hover:bg-gray-700 cursor-pointer">
                 {crypto.name}
               </li>
             ))}
-        </ul>
+      </ul>
+      
       )}
     </div>
   );
