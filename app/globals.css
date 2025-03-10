@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+
+
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 20, 12, 31;
+  --background-end-rgb: 20, 12, 31;
+  --purple-glow: rgba(139, 92, 246, 0.3);
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: radial-gradient(circle at top left,
+    rgb(var(--background-start-rgb)),
+    rgb(var(--background-end-rgb))),
+    radial-gradient(circle at bottom right,
+    rgba(139, 92, 246, 0.15),
+    transparent 800px);
+  min-height: 100vh;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer components {
+  .crypto-card {
+    @apply bg-secondary p-4 rounded-lg transition-all duration-300
+           hover:shadow-[0_0_30px_rgba(139,92,246,0.3)]
+           hover:transform hover:scale-105
+           cursor-pointer;
+  }
+
+  .search-input {
+    @apply w-full px-4 py-2 bg-secondary rounded-lg
+           text-white placeholder-gray-400
+           focus:outline-none focus:ring-2 focus:ring-purple-500
+           transition-all duration-300
+           hover:shadow-[0_0_20px_rgba(139,92,246,0.2)];
+  }
+
+  .price-up {
+    @apply text-green-500 animate-float;
+  }
+
+  .price-down {
+    @apply text-red-500 animate-float;
+  }
+
+  .loading-spinner {
+    @apply inline-block animate-spin rounded-full h-8 w-8
+           border-t-2 border-b-2 border-purple-500
+           animate-pulse-slow;
+  }
+}
+
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(var(--background-start-rgb));
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2D2B4A;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3D3B5A;
+}
+
+
+* {
+  transition: all 0.3s ease-in-out;
+} 
